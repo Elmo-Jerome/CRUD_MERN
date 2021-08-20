@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getTodos } from './api';
 
 export const TodoList = () => {
     const [items, setItems] = useState([])
 
-    useEffect(() =>{
-        setItems([
-            {text: "foo", id: 0},
-            {text: "bar", id: 1},
-            {text: "bazz", id: 2}
-        ])
+    useEffect(() => {
+        const fetchItems = async () => {
+            const todos = await getTodos()
+            setItems(todos)
+        }
+        fetchItems()
     }, [])
 
     return (
@@ -19,14 +20,14 @@ export const TodoList = () => {
                 <table className="table table-striped mt-3">
                     <thead>
                         <tr>
-                        <th>Text</th>
-                        <th>Action</th>
+                            <th>Text</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             items.map(todo => (
-                                <tr key={todo.id}>
+                                <tr key={todo._id}>
                                     <td>
                                         {todo.text}
                                     </td>

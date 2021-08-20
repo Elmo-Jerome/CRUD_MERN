@@ -6,11 +6,9 @@ export const TodoForm = ({ todo, onSubmit }) => {
     const { register, handleSubmit } = useForm({
         defaultValues: { text: todo ? todo.text : "" },
     });
-    const history = useHistory();
 
     const submitHandler = handleSubmit((data) => {
         onSubmit(data)
-        history.push("/")
     })
 
     return (
