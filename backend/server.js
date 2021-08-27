@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    Todo.find((err, todo) => {
+    Todo.find((err, todos) => {
         if (err) {
             console.log(err);
         } else {

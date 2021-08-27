@@ -21,12 +21,14 @@ export const EditTodo = () => {
         history.push("/")
     }
 
-    return todo ?
+    return todo ? (
         <div className="container">
-            <div className="mt-3">
-                <h3>Edit Todo Item</h3>
-                <TodoForm todo={todo} onSubmit={onSubmit} />
-            </div>
+          <div className="mt-3">
+            <h3>Edit Todo Item</h3>
+            <TodoForm todo={todo} onSubmit={onSubmit}/>
+          </div>
         </div>
-        : <div>Loading...</div>
+      ) : (
+        <div>Loading...</div>
+      );
 };
